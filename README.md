@@ -1,1 +1,3 @@
 # STM32H743IIT6-DMA-EXAMPLE
+
+Without HAL and CubeMX
