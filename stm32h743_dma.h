@@ -94,10 +94,10 @@
 
 
           void DMA_Init                  (DMA_Stream_TypeDef* stream, unsigned long perif, unsigned long mem, unsigned short size, unsigned long conf);
-		  void DMA_InitDoubleBuffer      (DMA_Stream_TypeDef* Stream, unsigned long perif, unsigned long mem0, unsigned long mem1, unsigned short size, unsigned long conf);
+          void DMA_InitDoubleBuffer      (DMA_Stream_TypeDef* Stream, unsigned long perif, unsigned long mem0, unsigned long mem1, unsigned short size, unsigned long conf);
           void DMA_DeInit                (DMA_Stream_TypeDef* stream);
           void DMA_Start                 (DMA_Stream_TypeDef* stream);
-		  void DMA_ReStart               (DMA_Stream_TypeDef* stream, unsigned short size);
+          void DMA_ReStart               (DMA_Stream_TypeDef* stream, unsigned short size);
           void DMA_Stop                  (DMA_Stream_TypeDef* stream);
 
 unsigned short DMA_GetCurrentDataCounter (DMA_Stream_TypeDef* stream);
