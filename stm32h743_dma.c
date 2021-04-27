@@ -13,14 +13,14 @@ void DMA_Init(DMA_Stream_TypeDef* Stream, unsigned long perif, unsigned long mem
 {
 	unsigned long tmp = 0;
 
-    tmp  = Stream->CR;
-    tmp &= CCR_CLEAR_Mask;
-    tmp |= conf;
+	tmp  = Stream->CR;
+	tmp &= CCR_CLEAR_Mask;
+	tmp |= conf;
 
-    Stream->NDTR = size;
-    Stream->PAR  = perif;
-    Stream->M0AR = mem;
-    Stream->CR   = tmp;
+	Stream->NDTR = size;
+	Stream->PAR  = perif;
+	Stream->M0AR = mem;
+	Stream->CR   = tmp;
 }
 
 // **********************************
@@ -30,15 +30,15 @@ void DMA_InitDoubleBuffer(DMA_Stream_TypeDef* Stream, unsigned long perif, unsig
 {
 	unsigned long tmp = 0;
 
-    tmp  = Stream->CR;
-    tmp &= CCR_CLEAR_Mask;
-    tmp |= conf;
+	tmp  = Stream->CR;
+	tmp &= CCR_CLEAR_Mask;
+	tmp |= conf;
 
-    Stream->NDTR = size;
-    Stream->PAR  = perif;
-    Stream->M0AR = mem0;
+	Stream->NDTR = size;
+	Stream->PAR  = perif;
+	Stream->M0AR = mem0;
 	Stream->M1AR = mem1;
-    Stream->CR   = tmp;
+	Stream->CR   = tmp;
 }
 
 // **********************************
@@ -55,7 +55,7 @@ unsigned short DMA_GetCurrentDataCounter(DMA_Stream_TypeDef* stream)
 // **********************************
 void DMA_Start(DMA_Stream_TypeDef* stream)
 {
-    stream->CR |= DMA_SxCR_EN;
+	stream->CR |= DMA_SxCR_EN;
 }
 
 // ======================================
@@ -66,7 +66,7 @@ void DMA_ReStart (DMA_Stream_TypeDef* stream, unsigned short size)
 	stream->CR &= ~DMA_SxCR_EN;
 	
 	if      (stream == DMA1_Stream0) DMA1->LIFCR |= DMA1_Stream0_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 0 */
-    else if (stream == DMA1_Stream1) DMA1->LIFCR |= DMA1_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 1 */
+	else if (stream == DMA1_Stream1) DMA1->LIFCR |= DMA1_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 1 */
 	else if (stream == DMA1_Stream2) DMA1->LIFCR |= DMA1_Stream2_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 2 */
 	else if (stream == DMA1_Stream3) DMA1->LIFCR |= DMA1_Stream3_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 3 */
 	else if (stream == DMA1_Stream4) DMA1->HIFCR |= DMA1_Stream4_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 4 */
@@ -75,7 +75,7 @@ void DMA_ReStart (DMA_Stream_TypeDef* stream, unsigned short size)
 	else if (stream == DMA1_Stream7) DMA1->HIFCR |= DMA1_Stream7_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 7 */
 	
 	else if (stream == DMA2_Stream0) DMA1->LIFCR |= DMA2_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 1 */
-    else if (stream == DMA2_Stream1) DMA1->LIFCR |= DMA2_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 1 */
+	else if (stream == DMA2_Stream1) DMA1->LIFCR |= DMA2_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 1 */
 	else if (stream == DMA2_Stream2) DMA1->LIFCR |= DMA2_Stream2_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 2 */
 	else if (stream == DMA2_Stream3) DMA1->LIFCR |= DMA2_Stream3_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 3 */
 	else if (stream == DMA2_Stream4) DMA1->HIFCR |= DMA2_Stream4_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 4 */
@@ -83,7 +83,7 @@ void DMA_ReStart (DMA_Stream_TypeDef* stream, unsigned short size)
 	else if (stream == DMA2_Stream6) DMA1->HIFCR |= DMA2_Stream6_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 6 */
 	else if (stream == DMA2_Stream7) DMA1->HIFCR |= DMA2_Stream7_IT_Mask; /* Reset interrupt pending bits for DMA2 Stream 7 */
 	
-    stream->NDTR = size;	// Заполняем все нужные поля. Размер передачи.
+	    stream->NDTR = size;	// Заполняем все нужные поля. Размер передачи.
 	stream->CR  |= DMA_SxCR_EN;
 }
 
@@ -92,7 +92,7 @@ void DMA_ReStart (DMA_Stream_TypeDef* stream, unsigned short size)
 // **********************************
 void DMA_Stop(DMA_Stream_TypeDef* stream)
 {
-    stream->CR &= (uint16_t)(~DMA_SxCR_EN);
+	    stream->CR &= (uint16_t)(~DMA_SxCR_EN);
 }
 
 // **********************************
@@ -100,14 +100,14 @@ void DMA_Stop(DMA_Stream_TypeDef* stream)
 // **********************************
 void DMA_DeInit(DMA_Stream_TypeDef* stream)
 {
-    stream->CR  &= (uint16_t)(~DMA_SxCR_EN);
-    stream->CR   = 0;
-    stream->NDTR = 0;
-    stream->PAR  = 0;
-    stream->M0AR = 0;
+	stream->CR  &= (uint16_t)(~DMA_SxCR_EN);
+	stream->CR   = 0;
+	stream->NDTR = 0;
+	stream->PAR  = 0;
+	stream->M0AR = 0;
 
-    if      (stream == DMA1_Stream0) DMA1->LIFCR |= DMA1_Stream0_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 0 */
-    else if (stream == DMA1_Stream1) DMA1->LIFCR |= DMA1_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 1 */
+	if      (stream == DMA1_Stream0) DMA1->LIFCR |= DMA1_Stream0_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 0 */
+	else if (stream == DMA1_Stream1) DMA1->LIFCR |= DMA1_Stream1_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 1 */
 	else if (stream == DMA1_Stream2) DMA1->LIFCR |= DMA1_Stream2_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 2 */
 	else if (stream == DMA1_Stream3) DMA1->LIFCR |= DMA1_Stream3_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 3 */
 	else if (stream == DMA1_Stream4) DMA1->HIFCR |= DMA1_Stream4_IT_Mask; /* Reset interrupt pending bits for DMA1 Stream 4 */
